@@ -9,12 +9,15 @@ Amplify.configure(aws_exports);
 
 //export default function FormPropsTextFields() {
 class App extends Component {
-
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
   handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
     
-    fetch('sendemail.js', {
+    fetch('/src/sendemail.js', {
       method: 'POST',
       body: data,
     });
