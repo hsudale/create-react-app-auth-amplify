@@ -9,10 +9,21 @@ Amplify.configure(aws_exports);
 
 //export default function FormPropsTextFields() {
 class App extends Component {
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    
+    fetch('/formsent.js', {
+      method: 'POST',
+      body: data,
+    });
+  } 
+  
   render() {
   return (
     <center><p>-- Fill Form To Email Other --</p><br/>
-    <form noValidate autoComplete="off">
+    <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
       <div>
         <TextField required id="fname" label="First Name: " fullWidth="1" defaultValue="" />
         <br/>
@@ -36,7 +47,7 @@ class App extends Component {
             type="submit"
             size="large" 
             color="primary" >
-            Submit
+            SEND
         </Button>
       </div>
     </form>
