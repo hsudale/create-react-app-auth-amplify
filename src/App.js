@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 mySubmitHandler = (event) => {
   event.preventDefault();
-  //let age = this.state.age;
+  let age = this.state.age;
   //if (!Number(age)) {
   //  alert("Your age must be a number");
   //}
