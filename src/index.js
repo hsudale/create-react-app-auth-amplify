@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+//import './index.css';
 //import App from './App';
 import * as serviceWorker from './serviceWorker';
 //ReactDOM.render(<App />, document.getElementById('root'));
@@ -24,59 +24,6 @@ import {
   FormControl,
   FormControlLabel,
 } from '@material-ui/core';
-// Picker
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  TimePicker,
-  DatePicker,
-} from '@material-ui/pickers';
-
-function DatePickerWrapper(props) {
-  const {
-    input: { name, onChange, value, ...restInput },
-    meta,
-    ...rest
-  } = props;
-  const showError =
-    ((meta.submitError && !meta.dirtySinceLastSubmit) || meta.error) &&
-    meta.touched;
-
-  return (
-    <DatePicker
-      {...rest}
-      name={name}
-      helperText={showError ? meta.error || meta.submitError : undefined}
-      error={showError}
-      inputProps={restInput}
-      onChange={onChange}
-      value={value === '' ? null : value}
-    />
-  );
-}
-
-function TimePickerWrapper(props) {
-  const {
-    input: { name, onChange, value, ...restInput },
-    meta,
-    ...rest
-  } = props;
-  const showError =
-    ((meta.submitError && !meta.dirtySinceLastSubmit) || meta.error) &&
-    meta.touched;
-
-  return (
-    <TimePicker
-      {...rest}
-      name={name}
-      helperText={showError ? meta.error || meta.submitError : undefined}
-      error={showError}
-      inputProps={restInput}
-      onChange={onChange}
-      value={value === '' ? null : value}
-    />
-  );
-}
 
 const onSubmit = async values => {
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -102,20 +49,7 @@ function App() {
     <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
       <CssBaseline />
       <Typography variant="h4" align="center" component="h1" gutterBottom>
-        🏁 React Final Form
-      </Typography>
-      <Typography variant="h5" align="center" component="h2" gutterBottom>
-        Material-UI Example
-      </Typography>
-      <Typography paragraph>
-        <Link href="https://github.com/erikras/react-final-form#-react-final-form">
-          Read Docs
-        </Link>
-        . This example demonstrates using{' '}
-        <Link href="https://material-ui.com/demos/text-fields/">
-          Material-UI
-        </Link>{' '}
-        form controls.
+        Email Someone Form
       </Typography>
       <Form
         onSubmit={onSubmit}
@@ -147,161 +81,23 @@ function App() {
                 </Grid>
                 <Grid item xs={12}>
                   <Field
-                    name="email"
+                    name="Email"
                     fullWidth
                     required
                     component={TextField}
                     type="email"
-                    label="Email"
+                    label="Send to Email (ex. somethingn@domain)"
                   />
-                </Grid>
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    label="Employed"
-                    control={
-                      <Field
-                        name="employed"
-                        component={Checkbox}
-                        type="checkbox"
-                      />
-                    }
-                  />
-                </Grid>
-                <Grid item>
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend">Best Stooge</FormLabel>
-                    <RadioGroup row>
-                      <FormControlLabel
-                        label="Larry"
-                        control={
-                          <Field
-                            name="stooge"
-                            component={Radio}
-                            type="radio"
-                            value="larry"
-                          />
-                        }
-                      />
-                      <FormControlLabel
-                        label="Moe"
-                        control={
-                          <Field
-                            name="stooge"
-                            component={Radio}
-                            type="radio"
-                            value="moe"
-                          />
-                        }
-                      />
-                      <FormControlLabel
-                        label="Curly"
-                        control={
-                          <Field
-                            name="stooge"
-                            component={Radio}
-                            type="radio"
-                            value="curly"
-                          />
-                        }
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <Grid item>
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend">Sauces</FormLabel>
-                    <FormGroup row>
-                      <FormControlLabel
-                        label="Ketchup"
-                        control={
-                          <Field
-                            name="sauces"
-                            component={Checkbox}
-                            type="checkbox"
-                            value="ketchup"
-                          />
-                        }
-                      />
-                      <FormControlLabel
-                        label="Mustard"
-                        control={
-                          <Field
-                            name="sauces"
-                            component={Checkbox}
-                            type="checkbox"
-                            value="mustard"
-                          />
-                        }
-                      />
-                      <FormControlLabel
-                        label="Salsa"
-                        control={
-                          <Field
-                            name="sauces"
-                            component={Checkbox}
-                            type="checkbox"
-                            value="salsa"
-                          />
-                        }
-                      />
-                      <FormControlLabel
-                        label="Guacamole 🥑"
-                        control={
-                          <Field
-                            name="sauces"
-                            component={Checkbox}
-                            type="checkbox"
-                            value="guacamole"
-                          />
-                        }
-                      />
-                    </FormGroup>
-                  </FormControl>
                 </Grid>
                 <Grid item xs={12}>
                   <Field
                     fullWidth
-                    name="notes"
+                    name="msg"
                     component={TextField}
                     multiline
-                    label="Notes"
+                    label="Message to send"
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <Field
-                    fullWidth
-                    name="city"
-                    component={Select}
-                    label="Select a City"
-                    formControlProps={{ fullWidth: true }}
-                  >
-                    <MenuItem value="London">London</MenuItem>
-                    <MenuItem value="Paris">Paris</MenuItem>
-                    <MenuItem value="Budapest">
-                      A city with a very long Name
-                    </MenuItem>
-                  </Field>
-                </Grid>
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                  <Grid item xs={6}>
-                    <Field
-                      name="rendez-vous"
-                      component={DatePickerWrapper}
-                      fullWidth
-                      margin="normal"
-                      label="Rendez-vous"
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Field
-                      name="alarm"
-                      component={TimePickerWrapper}
-                      fullWidth
-                      margin="normal"
-                      label="Alarm"
-                    />
-                  </Grid>
-                </MuiPickersUtilsProvider>
                 <Grid item style={{ marginTop: 16 }}>
                   <Button
                     type="button"
@@ -324,7 +120,6 @@ function App() {
                 </Grid>
               </Grid>
             </Paper>
-            <pre>{JSON.stringify(values, 0, 2)}</pre>
           </form>
         )}
       />
