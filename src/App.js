@@ -11,13 +11,14 @@ Amplify.configure(aws_exports);
 class App extends Component {
   render() {
   return (
+    <center><p>-- Fill Form To Email Other --</p><br/>
     <form noValidate autoComplete="off">
       <div>
-        <TextField required id="fname" label="First Name: " defaultValue="" />
+        <TextField required id="fname" label="First Name: " fullWidth="1" defaultValue="" />
         <br/>
-        <TextField required id="lname" label="Last Name: " defaultValue="" />
+        <TextField required id="lname" label="Last Name: " fullWidth="1" defaultValue="" />
         <br/>
-        <TextField required id="email" label="Send-to Email: " defaultValue="" />
+        <TextField required id="email" label="Send-to Email: " fullWidth="1" defaultValue="" />
         <br/>
         <br/>
         <br/>
@@ -25,6 +26,7 @@ class App extends Component {
         <TextField
           id="message"
           label="Message: "
+          fullWidth="1"
           multiline
           rows={5}
           defaultValue=" "
@@ -38,6 +40,7 @@ class App extends Component {
         </Button>
       </div>
     </form>
+    </center>
   );
   }
 }
