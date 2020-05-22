@@ -28,18 +28,9 @@ class App extends Component {
           multiline
           rows={5}
           defaultValue=" "
-          variant="outlined"
-        />        <br/>
-
-        <br/>
-        <br/>
-        <Butt        <br/>
-        <br/>
-        <br/>
-on 
+          variant="outlined"/>
+        <Button 
             variant="contained" 
-        <br/>
-        <br/>
             type="submit"
             size="large" 
             color="primary" >
