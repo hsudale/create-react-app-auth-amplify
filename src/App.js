@@ -28,11 +28,11 @@ class App extends Component {
     <center><p>-- Fill Form To Email Other --</p><br/>
     <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
       <div>
-        <TextField required id="fname" label="First Name: " fullWidth="1" defaultValue="" />
+        <TextField required id="fname" label="First Name: " defaultValue="" />
         <br/>
-        <TextField required id="lname" label="Last Name: " fullWidth="1" defaultValue="" />
+        <TextField required id="lname" label="Last Name: " defaultValue="" />
         <br/>
-        <TextField required id="email" label="Send-to Email: " fullWidth="1" defaultValue="" />
+        <TextField required id="email" label="Send-to Email: " defaultValue="" />
         <br/>
         <br/>
         <br/>
@@ -59,4 +59,5 @@ class App extends Component {
   }
 }
 
-export default withAuthenticator(App, true);
+//export default withAuthenticator(App, true);
+export default App;
