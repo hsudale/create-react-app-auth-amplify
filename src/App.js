@@ -14,7 +14,7 @@ class App extends Component {
     event.preventDefault();
     const data = new FormData(event.target);
     
-    fetch('/formsent.js', {
+    fetch('sendemail.js', {
       method: 'POST',
       body: data,
     });
